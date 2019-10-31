@@ -1,0 +1,42 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+MD_YM2413	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+setFrequency	KEYWORD2
+setVolume	KEYWORD2
+setNoise	KEYWORD2
+tone	KEYWORD2
+note	KEYWORD2
+noise	KEYWORD2
+setADSR	KEYWORD2
+isIdle	KEYWORD2
+play	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+VOL_OFF	LITERAL1
+VOL_MAX	LITERAL1
+MAX_CHANNELS	LITERAL1
+NOISE_CHANNEL	LITERAL1
+PERIODIC_0	LITERAL1
+PERIODIC_1	LITERAL1
+PERIODIC_2	LITERAL1
+PERIODIC_3	LITERAL1
+WHITE_0	LITERAL1
+WHITE_1	LITERAL1
+WHITE_2	LITERAL1
+WHITE_3	LITERAL1
+NOISE_OFF	LITERAL1

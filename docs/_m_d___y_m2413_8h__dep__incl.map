@@ -1,0 +1,6 @@
+<map id="src/MD_YM2413.h" name="src/MD_YM2413.h">
+<area shape="rect" id="node1" title="Main header file for the MD_YM2413 library." alt="" coords="113,5,244,32"/>
+<area shape="rect" id="node3" href="$_m_d___y_m2413_8cpp.html" title="Implements class definition and general methods." alt="" coords="5,155,149,181"/>
+<area shape="rect" id="node5" href="$_m_d___y_m2413__hw_8cpp.html" title="Implements hardware related methods." alt="" coords="197,155,363,181"/>
+<area shape="rect" id="node7" href="$_m_d___y_m2413__lib_8h.html" title="Library only definitions for the MD_YM2413 library." alt="" coords="103,80,253,107"/>
+</map>
