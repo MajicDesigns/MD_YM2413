@@ -18,9 +18,9 @@ The YM2413, OPLL, is a cost-reduced FM synthesis sound chip manufactured
 by Yamaha Corporation and based on their YM3812 (OPL2).
 
 The simplifications mean that the YM2413 can only play one user-defined 
-instrument at a time, with 15 read-only hard-coded instrument profiles
-available. The IC can operate as 9 channels of instruments or 6 channels
-with general instruments and 5 with hard-coded percussion instruments.
+instrument at a time, with an additional 15 read-only hard-coded instrument
+profiles available. The IC can operate as 9 channels of instruments or 6 
+channels with melodic instruments and 5 with hard-coded percussion instruments.
 
 Its main historical application was the generation of music and sound effects in 
 microprocessor systems. It was extensively used in early game consoles, arcade games, 
@@ -131,7 +131,7 @@ in the library examples.
 Audio Output
 ------------
 The Audio output from pins 14 and 15 (MO, RO) of the IC can combined into 
-a mono signal to directly feed an amplifer and external speaker.
+a mono signal to directly feed an amplifier and external speaker.
 
 \page pageLibrary Using the Library
 Defining the object
@@ -221,6 +221,8 @@ class MD_YM2413
     static const uint8_t MIN_OCTAVE = 1;    ///< smallest octave playable
     static const uint8_t MAX_OCTAVE = 8;    ///< largest playable octave
 
+    static const uint8_t CH_UNDEFINED = 255;  ///< undefined channel indicator
+
     static const uint8_t PERC_CHAN_BASE = 6;            ///< Base channel number for percussion instruments if enabled
     static const uint8_t CH_HH = PERC_CHAN_BASE + 0;    ///< HI HAT channel number
     static const uint8_t CH_TCY = PERC_CHAN_BASE + 1;   ///< TOP CYMBAL channel number
@@ -247,12 +249,12 @@ class MD_YM2413
       I_TRUMPET = 7,
       I_ORGAN = 8,
       I_HORN = 9,
-      I_SYNTHESIZER = 10,
+      I_SYNTH = 10,
       I_HARPSICORD = 11,
       I_VIBRAPHONE = 12,
-      I_SYNTHESIZER_BASS = 13,
+      I_SYNTH_BASS = 13,
       I_ACOUSTIC_BASS = 14,
-      I_ELECTRIC_GUITAR = 15,
+      I_EGUITAR = 15,
       // These percussion definitions are offset to match 
       // the bit position for the 0E register and are the 
       // channel numbers for these.
@@ -403,17 +405,14 @@ class MD_YM2413
      * percussion mode is enabled, and instruments I_* can be set up on 
      * channels [0..5].
      *
-     * The instrument's release phase can be set to a standard mid-point 
-     * to override the instrument's set profile.
-     *
      * \sa setPercussion(), instrument_t, setSustain()
      *
      * \param chan    channel number on which volume is set [0..countChannels()-1].
      * \param instr   one of the instruments I_* from instrument_t.
-     * \param sustain modify the release profile of the sound envelope.
+     * \param vol     volume to set for the specificed channel in range [VOL_MIN..VOL_MAX].
      * \return true if the instrument was set correctly.
      */
-    bool setInstrument(uint8_t chan, instrument_t instr, bool sustain = false);
+    bool setInstrument(uint8_t chan, instrument_t instr, uint8_t vol = VOL_MAX);
 
     /**
      * Get the current instrument setting
@@ -426,7 +425,8 @@ class MD_YM2413
      * \param chan    channel number on which volume is set [0..countChannels()-1].
      * \return the value of the instrument set for the channel.
      */
-    instrument_t getInstrument(uint8_t chan) { if (chan < countChannels()) return(_C[chan].instrument); else return(I_UNDEFINED); }
+    instrument_t getInstrument(uint8_t chan) 
+    { if (chan < countChannels()) return(_C[chan].instrument); else return(I_UNDEFINED); }
 
     /** 
      * Standardise the instrument release phase
@@ -440,6 +440,15 @@ class MD_YM2413
      * \param sustain set true to standardise the release phase to a mid level value.
      */
     void setSustain(uint8_t chan, bool sustain) { if (chan < countChannels()) _C[chan].sustain = sustain; }
+
+    /**
+    * Get the volume for a channel.
+    *
+    * Get the current volume for a channel.
+    *
+    * \param chan  channel number on which volume is set [0..countChannels()-1].
+    */
+    uint8_t getVolume(uint8_t chan) { return(chan < countChannels() ? _C[chan].vol : 0); }
 
     /**
     * Set the volume for a channel.
@@ -474,11 +483,12 @@ class MD_YM2413
     *
     * \sa noteOff(), run()
     *
-    * \param chan    channel number on which to play this note [0..countChannels()-1].
-    * \param freq    frequency to play.
+    * \param chan     channel number on which to play this note [0..countChannels()-1].
+    * \param freq     frequency to play.
+     * \param vol     volume to set this note in range [VOL_MIN..VOL_MAX].
     * \param duration length of time in ms for the whole note to last.
     */
-    void noteOn(uint8_t chan, uint16_t freq, uint16_t duration = 0);
+    void noteOn(uint8_t chan, uint16_t freq, uint8_t vol, uint16_t duration = 0);
 
     /**
      * Play a note (octave and note#)
@@ -499,9 +509,10 @@ class MD_YM2413
      * \param chan    channel number on which to play this note [0..countChannels()-1].
      * \param octave  the octave block for this note [MIN_OCTAVE..MAX_OCTAVE].
      * \param note    the note number to play [0..11] as defined above.
+     * \param vol     volume to set this note in range [VOL_MIN..VOL_MAX].
      * \param duration length of time in ms for the whole note to last.
      */
-    void noteOn(uint8_t chan, uint8_t octave, uint8_t note, uint16_t duration = 0);
+    void noteOn(uint8_t chan, uint8_t octave, uint8_t note, uint8_t vol, uint16_t duration = 0);
 
     /**
      * Stop playing a note
@@ -588,6 +599,7 @@ class MD_YM2413
     static const uint16_t _blockTable[8];
 
     // Methods
+    void initChannels(void);
     uint16_t calcFNum(uint16_t freq, uint8_t block);
     uint8_t calcBlock(uint16_t freq);
     uint8_t buildReg2x(bool susOn, bool keyOn, uint8_t octave, uint16_t fNum);

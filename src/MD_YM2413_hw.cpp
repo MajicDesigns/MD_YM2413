@@ -79,6 +79,7 @@ uint8_t MD_YM2413::buildReg2x(bool susOn, bool keyOn, uint8_t octave, uint16_t f
 uint8_t MD_YM2413::buildReg0e(bool enable, instrument_t instr, uint8_t keyOn)
 {
   uint8_t b = 0;
+  uint8_t x = (instr - P_HI_HAT) & 0x7;
 
   if (enable) b |= (1 << R_RHYTHM_SET_BIT);
   if (instr != I_UNDEFINED)   // it has been specified
@@ -86,14 +87,15 @@ uint8_t MD_YM2413::buildReg0e(bool enable, instrument_t instr, uint8_t keyOn)
     // set the current state for this.
     // Note percussion channels are defined in the right order for this
     for (uint8_t i = 0; i < PERC_CHANNELS; i++)
-      if (_C[i].state != IDLE)
+      if (_C[PERC_CHAN_BASE+i].state != IDLE)
         b |= (1 << i);
 
     // now set the new state
-    b &= ~(1 << (instr - P_HI_HAT));  // clear the bit
-    if (keyOn) b |= (1 << (instr - P_HI_HAT));  // set it if required
+    b &= ~(1 << x);  // clear the bit
+    if (keyOn) b |= (1 << x);  // set it if required
   }
 
+  //DEBUGX(" Reg0e: 0x", b);
   return(b);
 }
 

@@ -29,11 +29,13 @@ void MD_YM2413::begin(void)
   // initialise the hardware defaults
   send(R_TEST_CTL_REG, 0);    // never test mode
   setPercussion(false);       // all instruments to default (below)
+}
 
+void MD_YM2413::initChannels(void)
+{
   for (uint8_t i = 0; i < countChannels(); i++)
   {
-    setInstrument(i, DEFAULT_INSTRUMENT);
-    setVolume(i, VOL_MAX);
+    setInstrument(i, DEFAULT_INSTRUMENT, VOL_MAX);
     _C[i].state = IDLE;
   }
 }
@@ -77,24 +79,22 @@ void MD_YM2413::setPercussion(bool enable)
   if (enable)
   {
     // all the percussion instruments are set up one per channel
-    for (uint8_t i = PART_INSTR_CHANNELS; i < MAX_CHANNELS; i++)
-    {
-      setInstrument(PART_INSTR_CHANNELS+i, (instrument_t)(P_HI_HAT+i));
-      setVolume(i, VOL_MAX);
-    }
+    for (uint8_t i = PERC_CHAN_BASE; i < MAX_CHANNELS; i++)
+      setInstrument(i, (instrument_t)(P_HI_HAT + i - PERC_CHAN_BASE), VOL_MAX);
+
+    // set registers as per Application Manual section (III-1-7)
+    send(0x16, 0x20);
+    send(0x17, 0x50);
+    send(0x18, 0xc0);
+    send(0x26, 0x07);
+    send(0x27, 0x05);
+    send(0x28, 0x01);
   }
   else
-  {
-    // reclaim the shared channels and set them to default instrument
-    for (uint8_t i = PART_INSTR_CHANNELS; i < ALL_INSTR_CHANNELS; i++)
-    {
-      setInstrument(i, DEFAULT_INSTRUMENT, _C[i].sustain);
-      setVolume(i, VOL_MAX);
-    }
-  }
+    initChannels();
 }
 
-bool MD_YM2413::setInstrument(uint8_t chan, instrument_t instr, bool sustain)
+bool MD_YM2413::setInstrument(uint8_t chan, instrument_t instr, uint8_t vol)
 // 'attach' the specified instruiment to the channel
 {
   if (chan >= countChannels() ||    // not a valid channel
@@ -102,7 +102,7 @@ bool MD_YM2413::setInstrument(uint8_t chan, instrument_t instr, bool sustain)
     return(false);
 
   _C[chan].instrument = instr;
-  _C[chan].sustain = sustain;
+  _C[chan].vol = vol;
   if (!isPercussion() ||      // not in percussion mode or ...
     (isPercussion() && (chan < PART_INSTR_CHANNELS))) // ... percussion on, but not a percussion channel
   {
@@ -173,7 +173,7 @@ void MD_YM2413::setVolume(uint8_t v)
     setVolume(i, v);
 }
 
-void MD_YM2413::noteOn(uint8_t chan, uint16_t freq, uint16_t duration)
+void MD_YM2413::noteOn(uint8_t chan, uint16_t freq, uint8_t vol, uint16_t duration)
 // turn on a note by specifying a frequency
 {
   uint8_t data;
@@ -184,6 +184,7 @@ void MD_YM2413::noteOn(uint8_t chan, uint16_t freq, uint16_t duration)
   if (chan > countChannels())
     return;
 
+  setVolume(chan, vol);
   if (!isPercussion(chan))
   {
     _C[chan].octave = calcBlock(freq);
@@ -212,7 +213,7 @@ void MD_YM2413::noteOn(uint8_t chan, uint16_t freq, uint16_t duration)
   _C[chan].state = SUSTAIN;
 }
 
-void MD_YM2413::noteOn(uint8_t chan, uint8_t octave, uint8_t note, uint16_t duration)
+void MD_YM2413::noteOn(uint8_t chan, uint8_t octave, uint8_t note, uint8_t vol, uint16_t duration)
 // turn on a note by speficying the octave and note number
 {
   uint8_t data;
@@ -249,6 +250,7 @@ void MD_YM2413::noteOn(uint8_t chan, uint8_t octave, uint8_t note, uint16_t dura
   }
 
   // common data
+  setVolume(chan, vol);
   _C[chan].frequency = 0;   // not used
   _C[chan].duration = duration;
   _C[chan].timeBase = millis();
@@ -260,6 +262,9 @@ void MD_YM2413::noteOff(uint8_t chan)
 {
   uint8_t data;
 
+  DEBUG("\nnoteOff C", chan);
+
+  setVolume(chan, VOL_OFF);   // silence it  as well as turn off
   if (!isPercussion(chan))
   {
     data = buildReg2x(_C[chan].sustain, false, _C[chan].octave, _C[chan].fNum);
