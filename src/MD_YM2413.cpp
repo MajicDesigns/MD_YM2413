@@ -112,6 +112,30 @@ bool MD_YM2413::setInstrument(uint8_t chan, instrument_t instr, uint8_t vol)
   return(true);
 }
 
+void MD_YM2413::defineInstrument(const envelope_t *env)
+{
+  uint8_t data[8];
+
+  // set each byte in turn
+  data[0] = ((env[MPARAM].pAM ? 1 : 0) << 7) | ((env[MPARAM].pVIB ? 1 : 0) << 6) |
+            ((env[MPARAM].pEGTYP ? 1 : 0) << 5) | ((env[MPARAM].pKSR ? 1 : 0) << 4) |
+            (env[MPARAM].pMULTI & 0xf);
+  data[1] = ((env[CPARAM].pAM ? 1 : 0) << 7) | ((env[CPARAM].pVIB ? 1 : 0) << 6) |
+            ((env[CPARAM].pEGTYP ? 1 : 0) << 5) | ((env[CPARAM].pKSR ? 1 : 0) << 4) |
+            (env[CPARAM].pMULTI & 0xf);
+  data[2] = ((env[MPARAM].pKSL & 0x3) << 6) | (env[MPARAM].pTL & 0x3f);
+  data[3] = ((env[CPARAM].pKSL & 0x3) << 6) | 
+            ((env[CPARAM].pDMC ? 0 : 1) << 4) | ((env[MPARAM].pDMC ? 1 : 0) << 3) |
+            (env[MPARAM].pFB & 0x7);
+  data[4] = ((env[MPARAM].pAR & 0xf) << 4) | (env[MPARAM].pDR & 0xf);
+  data[5] = ((env[CPARAM].pAR & 0xf) << 4) | (env[CPARAM].pDR & 0xf);
+  data[6] = ((env[MPARAM].pSL & 0xf) << 4) | (env[MPARAM].pRR & 0xf);
+  data[7] = ((env[CPARAM].pSL & 0xf) << 4) | (env[CPARAM].pRR & 0xf);
+    
+  // finally send this data through using the direct form
+  defineInstrument(data);
+}
+
 void MD_YM2413::setVolume(uint8_t chan, uint8_t v)
 // Set the volume set point for channel and remember the setting
 // Application values are 0-15 for min to max. Attenuator values

@@ -35,6 +35,7 @@ const uint8_t PITCHBEND_RANGE = 2;    // +/- range in semitones
 
 static const char PROGMEM PLAYLIST[][FILE_NAME_SIZE] =
 {
+"MARBLEMC.MID",
 //"birthday.mid",
 //"Mario.mid",
 //"pacman.mid",
