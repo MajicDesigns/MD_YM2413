@@ -112,28 +112,38 @@ bool MD_YM2413::setInstrument(uint8_t chan, instrument_t instr, uint8_t vol)
   return(true);
 }
 
-void MD_YM2413::defineInstrument(const envelope_t *env)
+void MD_YM2413::loadInstrumentOPL2(const uint8_t *ins, bool fromPROGMEM)
 {
+  uint8_t inst[OPL2_DATA_SIZE];
   uint8_t data[8];
+  uint8_t t;
 
-  // set each byte in turn
-  data[0] = ((env[MPARAM].pAM ? 1 : 0) << 7) | ((env[MPARAM].pVIB ? 1 : 0) << 6) |
-            ((env[MPARAM].pEGTYP ? 1 : 0) << 5) | ((env[MPARAM].pKSR ? 1 : 0) << 4) |
-            (env[MPARAM].pMULTI & 0xf);
-  data[1] = ((env[CPARAM].pAM ? 1 : 0) << 7) | ((env[CPARAM].pVIB ? 1 : 0) << 6) |
-            ((env[CPARAM].pEGTYP ? 1 : 0) << 5) | ((env[CPARAM].pKSR ? 1 : 0) << 4) |
-            (env[CPARAM].pMULTI & 0xf);
-  data[2] = ((env[MPARAM].pKSL & 0x3) << 6) | (env[MPARAM].pTL & 0x3f);
-  data[3] = ((env[CPARAM].pKSL & 0x3) << 6) | 
-            ((env[CPARAM].pDMC ? 0 : 1) << 4) | ((env[MPARAM].pDMC ? 1 : 0) << 3) |
-            (env[MPARAM].pFB & 0x7);
-  data[4] = ((env[MPARAM].pAR & 0xf) << 4) | (env[MPARAM].pDR & 0xf);
-  data[5] = ((env[CPARAM].pAR & 0xf) << 4) | (env[CPARAM].pDR & 0xf);
-  data[6] = ((env[MPARAM].pSL & 0xf) << 4) | (env[MPARAM].pRR & 0xf);
-  data[7] = ((env[CPARAM].pSL & 0xf) << 4) | (env[CPARAM].pRR & 0xf);
+  // copy the data into a temporary array
+  for (uint8_t i = 0; i < OPL2_DATA_SIZE; i++)
+    inst[i] = (fromPROGMEM ? pgm_read_byte(ins + i) : ins[i]);
+
+  // Now process the data, with conversions where necessary
+  data[0] = inst[1];    // Modulator AM/VIB/ETYPE/KSR/MULTI
+  data[1] = inst[7];    // Carrier   AM/VIB/ETYPE/KSR/MULTI
+  data[2] = inst[2];    // Modulator KSL/TL
+  // data[3] needs reformatting (below)
+  data[4] = inst[3];    // Modulator AR/DR
+  data[5] = inst[9];    // Carrier   AR/DR
+  data[6] = inst[4];    // Modulator SL/RR
+  data[7] = inst[10];   // Carrier   SL/RR
+
+  // handle conversion
+  data[3] = (inst[8] & 0xe0);        // Carrier   KSL
+  data[3] |= (inst[11] * 0x0e) >> 1; // Modulator FB
+  t = inst[9] & 0x7;
+  if (t == 1 || t == 2 || t == 3 || t == 5) // half sine wave
+    data[3] |= (1 << 4);             // Carrier   DC
+  t = inst[8] & 0x7;
+  if (t == 1 || t == 2 || t == 3 || t == 5) // half sine wave
+    data[3] |= (1 << 3);             // Carrier   DM
     
   // finally send this data through using the direct form
-  defineInstrument(data);
+  loadInstrument(data);
 }
 
 void MD_YM2413::setVolume(uint8_t chan, uint8_t v)

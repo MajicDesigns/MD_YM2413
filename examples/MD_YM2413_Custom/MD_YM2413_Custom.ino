@@ -11,6 +11,8 @@
 #include <MD_YM2413.h>
 #include <MD_MusicTable.h>
 #include <MD_cmdProcessor.h>
+#include "midi_instruments.h"
+#include "midi_drums.h"
 
 // Hardware Definitions ---------------
 // All the pins directly connected to D0-D7 on the IC, in sequential order 
@@ -31,9 +33,8 @@ char rcvBuf[RCV_BUF_SIZE];  // buffer for characters received from the console
 
 uint16_t timePlay = 1500;    // note playing time in ms
 uint16_t volume = MD_YM2413::VOL_MAX; // note playing volume
-uint8_t channel = 0;        // Channel being exercised
 
-MD_YM2413::envelope_t env[MD_YM2413::ENV_PARAM];
+const uint8_t CHANNEL = 0;   // Channel being exercised
 
 // Code -------------------------------
 void handlerHelp(char* param); // function prototype only
@@ -55,12 +56,12 @@ char *getNum(uint16_t &n, char *psz)
 
 void handlerZ(char* param) { hwReset(); }
       
-void handlerN(char *param)
+void handlerP(char *param)
 // Play note
 {
   uint16_t midiNote;
 
-  getNum(midiNote, param);
+  param = getNum(midiNote, param);
 
   if (T.findId(midiNote));
   {
@@ -74,14 +75,14 @@ void handlerN(char *param)
     Serial.print(F(") @ "));
     Serial.print(f);
     Serial.print(F("Hz"));
-    S.noteOn(channel, f, volume, timePlay);
+    S.noteOn(CHANNEL, f, volume, timePlay);
   }
 }
 
 void handlerV(char* param)
 // Channel Volume
 {
-  getNum(volume, param);
+  param = getNum(volume, param);
   if (volume > MD_YM2413::VOL_MAX)
     volume = MD_YM2413::VOL_MAX;
   Serial.print("\n>Volume ");
@@ -91,24 +92,31 @@ void handlerV(char* param)
 void handlerT(char *param)
 // time duration
 {
-  getNum(timePlay, param);
+  param = getNum(timePlay, param);
   Serial.print("\n>Time ");
   Serial.print(timePlay);
 }
 
-void handlerP(char* param)
+void handlerL(char* param)
 {
+  uint16_t inst;
+
+  param = getNum(inst, param);
+  inst &= 127;  // ensure in range
+  Serial.print("\n>Instrument ");
+  Serial.print(inst);
+  S.loadInstrumentOPL2(midiInstruments[inst], true);
 }
 
 const MD_cmdProcessor::cmdItem_t PROGMEM cmdTable[] =
 {
-  { "h", handlerHelp, "",  "Show this help" },
-  { "?", handlerHelp, "",  "Show thie help" },
-  { "v", handlerV,   "v",  "Set channel volume to v [0..15]" },
-  { "t", handlerT,   "t",  "Set play time duration to t ms" },
-  { "n", handlerN,   "m",  "Play MIDI Note m" },
-  { "p", handlerP,    "",  "Print current parameters" },
-  { "z", handlerZ,    "",  "Software reset" },
+  { "h", handlerHelp, "", "Show this help" },
+  { "?", handlerHelp, "", "Show this help" },
+  { "v", handlerV,   "v", "Set channel volume to v [0..15]" },
+  { "t", handlerT,   "t", "Set play time duration to t ms" },
+  { "l", handlerL,   "n", "Load MIDI instrument n"},
+  { "p", handlerP,   "m", "Play MIDI Note m" },
+  { "z", handlerZ,    "", "Software reset" },
 };
 
 MD_cmdProcessor CP(Serial, cmdTable, ARRAY_SIZE(cmdTable));
@@ -119,7 +127,9 @@ void setup(void)
 {
   Serial.begin(57600);
   S.begin();
-  S.setVolume(MD_YM2413::VOL_MAX);
+  S.setVolume(CHANNEL, volume);
+  S.setInstrument(CHANNEL, MD_YM2413::I_CUSTOM);
+  S.loadInstrumentOPL2(0);
 
   CP.begin();
 
