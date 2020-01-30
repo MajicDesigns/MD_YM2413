@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7emd_5fym2413_40',['~MD_YM2413',['../class_m_d___y_m2413.html#a0d760a4bb8fcbbbf8425e0ab5cc0c8f5',1,'MD_YM2413']]]
+  ['write_45',['write',['../class_m_d___y_m2413.html#a7abbf126e427a828c8b7601b77944b1a',1,'MD_YM2413']]]
 ];

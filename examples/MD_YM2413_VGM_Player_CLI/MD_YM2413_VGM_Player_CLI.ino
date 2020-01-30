@@ -1,6 +1,7 @@
 // Command Line Interface (Serial) to play VGM files from the SD card.
 // 
-// Enter commands on the serial monitor to control the application
+// Example program for the MD_YM2413 library.
+// Enter commands on the serial monitor to control the application.
 //
 // Dependencies
 // SDFat at https://github.com/greiman?tab=repositories

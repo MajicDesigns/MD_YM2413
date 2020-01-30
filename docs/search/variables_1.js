@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['max_5foctave_65',['MAX_OCTAVE',['../class_m_d___y_m2413.html#a0fb3500aadac8cfa56b3b283f46dee6e',1,'MD_YM2413']]],
-  ['min_5foctave_66',['MIN_OCTAVE',['../class_m_d___y_m2413.html#a2e26a3194804e9783b597439f73e4b2c',1,'MD_YM2413']]]
+  ['max_5foctave_77',['MAX_OCTAVE',['../class_m_d___y_m2413.html#a0fb3500aadac8cfa56b3b283f46dee6e',1,'MD_YM2413']]],
+  ['min_5foctave_78',['MIN_OCTAVE',['../class_m_d___y_m2413.html#a2e26a3194804e9783b597439f73e4b2c',1,'MD_YM2413']]]
 ];

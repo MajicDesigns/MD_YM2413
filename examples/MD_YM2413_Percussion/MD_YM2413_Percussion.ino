@@ -1,12 +1,6 @@
 // MD_YM2413 Library example program.
 //
-// Plays MIDI notes START_NOTE to END_NOTE in sequence over and over again.
-// Tests tone/note playing functions of the library using timed notes
-// and supplying frequency or octave/note number for comparison of the way
-// each note is generated.
-//
-// Library Dependencies
-// MusicTable library located at https://github.com/MajicDesigns/MD_MusicTable
+// Plays each percussion instrument in turn.
 //
 
 #include <MD_YM2413.h>
@@ -25,7 +19,7 @@ MD_YM2413 S(D_PIN, WE_PIN, A0_PIN);
 void setup(void)
 {
   Serial.begin(57600);
-  Serial.println(F("\n[MD_YM2413 Note Tester]"));
+  Serial.println(F("\n[MD_YM2413 Percussion Tester]"));
 
   S.begin();
   S.setPercussion(true);
@@ -33,7 +27,7 @@ void setup(void)
 
 void loop(void)
 {
-  // testing range for octaves 0 through 7
+  // testing range for percussion channels
   const uint8_t START_CHANNEL = MD_YM2413::CH_HH;    // first percussion channel
   const uint8_t END_CHANNEL = MD_YM2413::CH_BD;     // last percussion channel
 

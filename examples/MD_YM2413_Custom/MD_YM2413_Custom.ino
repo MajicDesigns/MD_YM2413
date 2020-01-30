@@ -1,7 +1,12 @@
 // MD_YM2413 Library example program.
 //
-// Allows interactive CLI setting of instrument parameters for exploring
-// what effect they can produce.
+// Example program for the MD_YM2413 library.
+//
+// Allows interactive CLI setting of 'canned' MIDI instrument parameters 
+// for exploring what effect they can produce.
+//
+// MIDI instruments and drums are define in OPL2 format in the 
+// midi_drums and midi_instruments header files, respectively.
 //
 // Library Dependencies
 // MD_MusicTable library located at https://github.com/MajicDesigns/MD_MusicTable
@@ -97,7 +102,7 @@ void handlerT(char *param)
   Serial.print(timePlay);
 }
 
-void handlerL(char* param)
+void handlerLI(char* param)
 {
   uint16_t inst;
 
@@ -108,15 +113,29 @@ void handlerL(char* param)
   S.loadInstrumentOPL2(midiInstruments[inst], true);
 }
 
+void handlerLD(char* param)
+{
+  uint16_t drum;
+
+  param = getNum(drum, param);
+  // ensure in range
+  if (drum < DRUM_NOTE_BASE) drum = DRUM_NOTE_BASE;
+  if (drum >= DRUM_NOTE_BASE + NUM_MIDI_DRUMS) drum = DRUM_NOTE_BASE + NUM_MIDI_DRUMS - 1;
+  Serial.print("\n>Instrument ");
+  Serial.print(drum);
+  S.loadInstrumentOPL2(midiDrums[drum], true);
+}
+
 const MD_cmdProcessor::cmdItem_t PROGMEM cmdTable[] =
 {
-  { "h", handlerHelp, "", "Show this help" },
-  { "?", handlerHelp, "", "Show this help" },
-  { "v", handlerV,   "v", "Set channel volume to v [0..15]" },
-  { "t", handlerT,   "t", "Set play time duration to t ms" },
-  { "l", handlerL,   "n", "Load MIDI instrument n"},
-  { "p", handlerP,   "m", "Play MIDI Note m" },
-  { "z", handlerZ,    "", "Software reset" },
+  { "h",  handlerHelp, "", "Show this help" },
+  { "?",  handlerHelp, "", "Show this help" },
+  { "v",  handlerV,   "v", "Set channel volume to v [0..15]" },
+  { "t",  handlerT,   "t", "Set play time duration to t ms" },
+  { "li", handlerLI,  "n", "Load MIDI instrument n [0..127]"},
+  { "ld", handlerLD,  "n", "Load MIDI drum n [27 .. 86]"},
+  { "p",  handlerP,   "m", "Play MIDI Note m" },
+  { "z",  handlerZ,    "", "Software reset" },
 };
 
 MD_cmdProcessor CP(Serial, cmdTable, ARRAY_SIZE(cmdTable));

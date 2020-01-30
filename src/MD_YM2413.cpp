@@ -18,7 +18,7 @@ _D(D), _we(we), _a0(a0)
 
 void MD_YM2413::begin(void)
 {
-  // Set all pins to outputs and initialise
+  // Set all pins to outputs and initialize
   for (int8_t i = 0; i < DATA_BITS; i++)
     pinMode(_D[i], OUTPUT);
   pinMode(_we, OUTPUT);
@@ -26,7 +26,7 @@ void MD_YM2413::begin(void)
 
   digitalWrite(_we, HIGH);
 
-  // initialise the hardware defaults
+  // initialize the hardware defaults
   send(R_TEST_CTL_REG, 0);    // never test mode
   setPercussion(false);       // all instruments to default (below)
 }
@@ -95,7 +95,7 @@ void MD_YM2413::setPercussion(bool enable)
 }
 
 bool MD_YM2413::setInstrument(uint8_t chan, instrument_t instr, uint8_t vol)
-// 'attach' the specified instruiment to the channel
+// 'attach' the specified instrument to the channel
 {
   if (chan >= countChannels() ||    // not a valid channel
      (!isPercussion() && instr >= P_HI_HAT))  // not a valid instrument for this mode
@@ -169,7 +169,7 @@ void MD_YM2413::setVolume(uint8_t chan, uint8_t v)
   {
     // Percussion mode is on and this is a percussion channel. 
     // These need to be sent in pairs as the registers
-    // are organised in nybbles for different percussion instruments
+    // are organized in nibbles for different percussion instruments
     switch (_C[chan].instrument)
     {
     case P_BASS_DRUM:
@@ -248,7 +248,7 @@ void MD_YM2413::noteOn(uint8_t chan, uint16_t freq, uint8_t vol, uint16_t durati
 }
 
 void MD_YM2413::noteOn(uint8_t chan, uint8_t octave, uint8_t note, uint8_t vol, uint16_t duration)
-// turn on a note by speficying the octave and note number
+// turn on a note by specifying the octave and note number
 {
   uint8_t data;
 

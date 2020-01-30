@@ -1,4 +1,6 @@
 // Play MIDI files from the SD card.
+//
+// Example file for the MD_YM2413 library
 // 
 // Dependencies
 // SDFat at https://github.com/greiman?tab=repositories
@@ -35,7 +37,7 @@ const uint8_t PITCHBEND_RANGE = 2;    // +/- range in semitones
 
 static const char PROGMEM PLAYLIST[][FILE_NAME_SIZE] =
 {
-"MARBLEMC.MID",
+//"MARBLEMC.MID",
 //"birthday.mid",
 //"Mario.mid",
 //"pacman.mid",
@@ -52,10 +54,10 @@ static const char PROGMEM PLAYLIST[][FILE_NAME_SIZE] =
 //"FERNANDO.MID",
 //"FUGUEGM.MID",
 //"GANGNAM.MID",
-//"GBROWN.MID",
+"GBROWN.MID",
 //"IPANEMA.mid",
 //"MOZART.MID",
-//"POPCORN.MID",
+"POPCORN.MID",
 //"PRDANCER.MID",
 "PROWLER.MID",
 //"SKYFALL.MID",

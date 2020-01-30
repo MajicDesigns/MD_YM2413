@@ -76,7 +76,7 @@ void loop(void)
           Serial.print(f);
           Serial.print(F("Hz"));
           for (uint8_t i = 0; i < CHAN_COUNT; i++)
-            S.noteOn(i, f, PLAY_TIME);
+            S.noteOn(i, f, MD_YM2413::VOL_MAX, PLAY_TIME);
         }
         else  // play by note/octave
         {
@@ -93,7 +93,7 @@ void loop(void)
           Serial.print(F(" N"));
           Serial.print(n);
           for (uint8_t i = 0; i < CHAN_COUNT; i++)
-            S.noteOn(i, o, n, PLAY_TIME);
+            S.noteOn(i, o, n, MD_YM2413::VOL_MAX, PLAY_TIME);
         }
 
         playToggle = !playToggle;

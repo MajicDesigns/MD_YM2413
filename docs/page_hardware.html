@@ -97,8 +97,8 @@ $(document).ready(function(){initNavTree('page_hardware.html','');});
 <img src="YM2413_BlockDiagram.png" alt=""/>
 <div class="caption">
 YM2413 Block Diagram</div></div>
-   <p>This is the bock diagram of the YM2413. It has an 8 bit bus interface with one address line to select one of two write-only registers. One register is used to select the byte register to access 8 of the 271 internal register bits and one for writing data to the selected register.</p>
-<p>On the analog side there are two outputs, one each for the Rhythym and Melody outputs.</p>
+   <p>This is the block diagram of the YM2413. It has an 8 bit bus interface with one address line to select one of two write-only registers. One register is used to select the byte register to access 8 of the 271 internal register bits and one for writing data to the selected register.</p>
+<p>On the analog side there are two outputs, one each for the Rhythm and Melody outputs.</p>
 <p>The IC DIP package has 18 pins with the following pinout: </p><pre class="fragment"> GND -&gt;  1 +-----+ 18 &lt;- D1
   D2 -&gt;  2 |  Y  | 17 &lt;- D0
   D3 -&gt;  3 |  M  | 16 &lt;- Vcc
@@ -122,12 +122,14 @@ XOUT -&gt;  9 +-----+ 10 &lt;- /AO
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">AO  </td><td class="markdownTableBodyNone">Address/Data discriminator   </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">MO, RO  </td><td class="markdownTableBodyNone">Melody and Rhythm outputs   </td></tr>
+<td class="markdownTableBodyNone">MO  </td><td class="markdownTableBodyNone">Melody Output   </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">CLK  </td><td class="markdownTableBodyNone">4MHz clock signal (see below)   </td></tr>
+<td class="markdownTableBodyNone">RO  </td><td class="markdownTableBodyNone">Rhythm Output   </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">VCC  </td><td class="markdownTableBodyNone">5V   </td></tr>
+<td class="markdownTableBodyNone">CLK  </td><td class="markdownTableBodyNone">4MHz clock signal   </td></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">VCC  </td><td class="markdownTableBodyNone">5V   </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">GND  </td><td class="markdownTableBodyNone">Ground   </td></tr>
 </table>
 <p>Note: If multiple ICs are interfaced, then the ICs CS line must also be used to select the right device and share the data lines.</p>
@@ -144,7 +146,7 @@ XOUT -&gt;  9 +-----+ 10 &lt;- /AO
 <td class="markdownTableBodyCenter">0  </td><td class="markdownTableBodyCenter">0  </td><td class="markdownTableBodyCenter">1  </td><td class="markdownTableBodyLeft">Data write mode   </td></tr>
 </table>
 <h2>Hardware Direct Connection to the MCU </h2>
-<p>The library 8 digital output data lines from the Arduino MCU and additional AO and WE digital outputs to load the data into the YM2413 IC.</p>
+<p>The library uses 8 digital output data lines from the Arduino MCU and additional AO and WE digital outputs to load the data into the YM2413 IC.</p>
 <p>The data pins used are for the application to specify as part of the object initialization parameters. The D array parameter has pin numbers arranged to correspond to the IC pins (ie, pin D[0] is connected to IC pin D0, D[1] to D1, etc). The AO and WE pins can be any arbitrary pins.</p>
 <p>Connections between the MCU and YM2413 are mapped as shown below. The Arduino pins are arbitrary and those the pins shown are used in the library examples.</p>
 <table class="markdownTable">
@@ -180,14 +182,14 @@ XOUT -&gt;  9 +-----+ 10 &lt;- /AO
 <td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">/IC [13] (MCU Reset)   </td></tr>
 </table>
 <h2>Audio Output </h2>
-<p>The Audio output from pins 14 and 15 (MO, RO) of the IC can combined into a mono signal to directly feed an amplifer and external speaker. </p>
+<p>The Audio output from pins 14 and 15 (MO, RO) of the IC can combined into a mono signal to directly feed an amplifier and external speaker. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Nov 1 2019 09:41:40 for MD_YM2413 Library by
+    <li class="footer">Generated on Thu Jan 30 2020 15:38:00 for MD_YM2413 Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

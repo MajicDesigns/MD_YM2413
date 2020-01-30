@@ -13,7 +13,7 @@ See header file for copyright and licensing comments.
 
 // Global data tables
 // FNum lookup table for note play within a block (octave)
-// The data is organised by note number [0..11] corresponding to 
+// The data is organized by note number [0..11] corresponding to 
 // notes C, C# .. A, A#, B
 const uint16_t PROGMEM MD_YM2413::_fNumTable[] =
 {

@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('class_m_d___y_m2413.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a4baea9c20383d245590e2d9f1c10d6b6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a> { <br />
-&#160;&#160;<b>I_ORIGINAL</b> = 0, 
+&#160;&#160;<b>I_CUSTOM</b> = 0, 
 <b>I_VIOLIN</b> = 1, 
 <b>I_GUITAR</b> = 2, 
 <b>I_PIANO</b> = 3, 
@@ -116,13 +116,13 @@ Public Types</h2></td></tr>
 <br />
 &#160;&#160;<b>I_ORGAN</b> = 8, 
 <b>I_HORN</b> = 9, 
-<b>I_SYNTHESIZER</b> = 10, 
-<b>I_HARPSICORD</b> = 11, 
+<b>I_SYNTH</b> = 10, 
+<b>I_HARPSICHORD</b> = 11, 
 <br />
 &#160;&#160;<b>I_VIBRAPHONE</b> = 12, 
-<b>I_SYNTHESIZER_BASS</b> = 13, 
+<b>I_SYNTH_BASS</b> = 13, 
 <b>I_ACOUSTIC_BASS</b> = 14, 
-<b>I_ELECTRIC_GUITAR</b> = 15, 
+<b>I_EGUITAR</b> = 15, 
 <br />
 &#160;&#160;<b>P_HI_HAT</b> = 16 + 0, 
 <b>P_TOP_CYMBAL</b> = 16 + 1, 
@@ -152,25 +152,33 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1afd692afb7666bec6f9c81e0d7af0c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff04cfdc927cee5e9f9e371ce7aae8a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion</a> (bool bEnable)</td></tr>
 <tr class="separator:aff04cfdc927cee5e9f9e371ce7aae8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fe6a255600bcf93daa4eb68054767ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a2fe6a255600bcf93daa4eb68054767ea">loadInstrumentOPL2</a> (const uint8_t *ins, bool fromPROGMEM=true)</td></tr>
+<tr class="separator:a2fe6a255600bcf93daa4eb68054767ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08e4130ecc42b62c0c0da34ac66714f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a08e4130ecc42b62c0c0da34ac66714f6">loadInstrument</a> (const uint8_t *data)</td></tr>
+<tr class="separator:a08e4130ecc42b62c0c0da34ac66714f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c03b3d8e478b670807542766bdf58d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#ad6c03b3d8e478b670807542766bdf58d">setSustain</a> (uint8_t chan, bool sustain)</td></tr>
+<tr class="separator:ad6c03b3d8e478b670807542766bdf58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a694a08e22939a0076948cb762855789a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a694a08e22939a0076948cb762855789a">isIdle</a> (uint8_t chan)</td></tr>
 <tr class="separator:a694a08e22939a0076948cb762855789a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3adfd20b47eea60b69b80d94366d5648"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a3adfd20b47eea60b69b80d94366d5648">run</a> (void)</td></tr>
 <tr class="separator:a3adfd20b47eea60b69b80d94366d5648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7abbf126e427a828c8b7601b77944b1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a7abbf126e427a828c8b7601b77944b1a">write</a> (uint8_t addr, uint8_t data)</td></tr>
+<tr class="separator:a7abbf126e427a828c8b7601b77944b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader">Sound Management.</div></td></tr>
-<tr class="memitem:a6a0b9806303fa49f94a6c1de912f245f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a6a0b9806303fa49f94a6c1de912f245f">setInstrument</a> (uint8_t chan, <a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a> instr, bool sustain=false)</td></tr>
-<tr class="separator:a6a0b9806303fa49f94a6c1de912f245f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eb6bd79f9bd3763d14fc3ddb29b7983"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a1eb6bd79f9bd3763d14fc3ddb29b7983">setInstrument</a> (uint8_t chan, <a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a> instr, uint8_t vol=<a class="el" href="class_m_d___y_m2413.html#a59ef0109f681e73292823edb016345ac">VOL_MAX</a>)</td></tr>
+<tr class="separator:a1eb6bd79f9bd3763d14fc3ddb29b7983"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8535e5be552b5ce08e3977128e35823f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a8535e5be552b5ce08e3977128e35823f">getInstrument</a> (uint8_t chan)</td></tr>
 <tr class="separator:a8535e5be552b5ce08e3977128e35823f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6c03b3d8e478b670807542766bdf58d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#ad6c03b3d8e478b670807542766bdf58d">setSustain</a> (uint8_t chan, bool sustain)</td></tr>
-<tr class="separator:ad6c03b3d8e478b670807542766bdf58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef374f42c43f7aadb8450868ac7b06a3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#aef374f42c43f7aadb8450868ac7b06a3">getVolume</a> (uint8_t chan)</td></tr>
+<tr class="separator:aef374f42c43f7aadb8450868ac7b06a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b2fc9686600dfc452f670a51e0990bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a5b2fc9686600dfc452f670a51e0990bf">setVolume</a> (uint8_t chan, uint8_t v)</td></tr>
 <tr class="separator:a5b2fc9686600dfc452f670a51e0990bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c0373ab2aa4a4c0e3391cb9b8cc12b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a5c0373ab2aa4a4c0e3391cb9b8cc12b3">setVolume</a> (uint8_t v)</td></tr>
 <tr class="separator:a5c0373ab2aa4a4c0e3391cb9b8cc12b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac46aa3c1f60ccee08c2dad71328ba34f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#ac46aa3c1f60ccee08c2dad71328ba34f">noteOn</a> (uint8_t chan, uint16_t freq, uint16_t duration=0)</td></tr>
-<tr class="separator:ac46aa3c1f60ccee08c2dad71328ba34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c6d38e535b49d7f3df7f7efed85978d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a3c6d38e535b49d7f3df7f7efed85978d">noteOn</a> (uint8_t chan, uint8_t octave, uint8_t note, uint16_t duration=0)</td></tr>
-<tr class="separator:a3c6d38e535b49d7f3df7f7efed85978d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a213cb511f7559347bacb967bc9e27f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a213cb511f7559347bacb967bc9e27f4a">noteOn</a> (uint8_t chan, uint16_t freq, uint8_t vol, uint16_t duration=0)</td></tr>
+<tr class="separator:a213cb511f7559347bacb967bc9e27f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4112f4449ae6e279977cd57fb067c6e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a4112f4449ae6e279977cd57fb067c6e1">noteOn</a> (uint8_t chan, uint8_t octave, uint8_t note, uint8_t vol, uint16_t duration=0)</td></tr>
+<tr class="separator:a4112f4449ae6e279977cd57fb067c6e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72e24f108a3ee174f65ff634a2972a0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a72e24f108a3ee174f65ff634a2972a0d">noteOff</a> (uint8_t chan)</td></tr>
 <tr class="separator:a72e24f108a3ee174f65ff634a2972a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -192,6 +200,14 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a0fb3500aadac8cfa56b3b283f46dee6e">MAX_OCTAVE</a> = 8</td></tr>
 <tr class="memdesc:a0fb3500aadac8cfa56b3b283f46dee6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">largest playable octave <br /></td></tr>
 <tr class="separator:a0fb3500aadac8cfa56b3b283f46dee6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0396e7f1513a8b3772fb9600bb8115bb"><td class="memItemLeft" align="right" valign="top"><a id="a0396e7f1513a8b3772fb9600bb8115bb"></a>
+static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a0396e7f1513a8b3772fb9600bb8115bb">CH_UNDEFINED</a> = 255</td></tr>
+<tr class="memdesc:a0396e7f1513a8b3772fb9600bb8115bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">undefined channel indicator <br /></td></tr>
+<tr class="separator:a0396e7f1513a8b3772fb9600bb8115bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a08b789c7deac60f9f88cfa7482bf1f"><td class="memItemLeft" align="right" valign="top"><a id="a9a08b789c7deac60f9f88cfa7482bf1f"></a>
+static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a9a08b789c7deac60f9f88cfa7482bf1f">OPL2_DATA_SIZE</a> = 12</td></tr>
+<tr class="memdesc:a9a08b789c7deac60f9f88cfa7482bf1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">OPL2 instrument definition size. <br /></td></tr>
+<tr class="separator:a9a08b789c7deac60f9f88cfa7482bf1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f4d70b74b47e347126a1d32aa3deb1a"><td class="memItemLeft" align="right" valign="top"><a id="a4f4d70b74b47e347126a1d32aa3deb1a"></a>
 static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_d___y_m2413.html#a4f4d70b74b47e347126a1d32aa3deb1a">PERC_CHAN_BASE</a> = 6</td></tr>
 <tr class="memdesc:a4f4d70b74b47e347126a1d32aa3deb1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base channel number for percussion instruments if enabled. <br /></td></tr>
@@ -270,7 +286,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 <p>Class Constructor.</p>
 <p>Instantiate a new instance of this derived class. The parameters passed are used to connect the software to the hardware. Multiple instances may co-exist.</p>
 <p>The D array is arranged to correspond to the IC pins (ie, pin D[0] is connected to IC pin D0, D[1] to D1, etc). D0 is the MSB in the data byte, D7 the LSB.</p>
-<p>The we and a0 pins are used to handshake the data over the data bus.</p>
+<p>The we and a0 pins are used for handshaking the data over the data bus.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="page_hardware.html">Hardware Connections</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -321,8 +337,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><div class="memdoc">
 <p>Initialize the object.</p>
 <p>Initialize the object data. This needs to be called during setup() to initialize new data for the class that cannot be done during the object creation.</p>
-<p>All the I/O is initailise, percussion mode is disabled and all instruments are set as I_PIANO at VOL_MAX volume by default.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a5b2fc9686600dfc452f670a51e0990bf">setVolume()</a>, <a class="el" href="class_m_d___y_m2413.html#a6a0b9806303fa49f94a6c1de912f245f">setInstrument()</a>, <a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a> </dd></dl>
+<p>All the I/O is initialize, percussion mode is disabled and all instruments are set as I_PIANO at VOL_MAX volume by default.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a5b2fc9686600dfc452f670a51e0990bf">setVolume()</a>, <a class="el" href="class_m_d___y_m2413.html#a1eb6bd79f9bd3763d14fc3ddb29b7983">setInstrument()</a>, <a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a> </dd></dl>
 
 </div>
 </div>
@@ -341,7 +357,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Return the nummber of channels.</p>
+<p>Return the number of channels.</p>
 <p>Return the number of channels depending on whether the percussion instruments are set.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a></dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>the number of channels in the current configuration. </dd></dl>
@@ -365,7 +381,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><div class="memdoc">
 <p>Get the current instrument setting</p>
 <p>Get the instrument set for the specified channel. This will be one of the instrument_t values.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a6a0b9806303fa49f94a6c1de912f245f">setInstrument()</a>, <a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a1eb6bd79f9bd3763d14fc3ddb29b7983">setInstrument()</a>, <a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">chan</td><td>channel number on which volume is set [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
@@ -373,6 +389,33 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the value of the instrument set for the channel. </dd></dl>
+
+</div>
+</div>
+<a id="aef374f42c43f7aadb8450868ac7b06a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef374f42c43f7aadb8450868ac7b06a3">&#9670;&nbsp;</a></span>getVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t MD_YM2413::getVolume </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>chan</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the volume for a channel.</p>
+<p>Get the current volume for a channel.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chan</td><td>channel number on which volume is set [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the current volume in the range [VOL_MIN..VOL_MAX]. </dd></dl>
 
 </div>
 </div>
@@ -447,9 +490,75 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 <p>Return the current library mode</p>
-<p>Returns the current library/hartdware operating mode set by <a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a>.</p>
+<p>Returns the current library/hardware operating mode set by <a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a>.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a></dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>true if percussion channels are enabled, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a08e4130ecc42b62c0c0da34ac66714f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08e4130ecc42b62c0c0da34ac66714f6">&#9670;&nbsp;</a></span>loadInstrument()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MD_YM2413::loadInstrument </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Define direct parameters for a custom instrument.</p>
+<p>Define the data for a custom instrument directly. The data is preformatted for the YM2413 device and will be passed through without further processing.</p>
+<p>This method is used to set instrument definitions that are in OPLL format and held in the application as a compact byte sequence.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="page_custom.html">Custom Instruments</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>an array of 8 bytes in RAM that will be written to registers 0x00 through 0x07. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2fe6a255600bcf93daa4eb68054767ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fe6a255600bcf93daa4eb68054767ea">&#9670;&nbsp;</a></span>loadInstrumentOPL2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MD_YM2413::loadInstrumentOPL2 </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>ins</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>fromPROGMEM</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Define the parameters for a custom instrument.</p>
+<p>Define the playing envelope in OPL2/OPL3 format for the custom instrument. The parameters are in higher OPL format, which is readily available and very close to the YM2413 format (OPLL). Translations are made as required.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="page_custom.html">Custom Instruments</a></dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ins</td><td>an array of OPL2_DATA_SIZE uint8_t bytes in OPL2 format data. </td></tr>
+    <tr><td class="paramname">fromPROGMEM</td><td>true if the data is loaded from PROGMEM false otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -471,7 +580,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 <p>Stop playing a note</p>
 <p>Stop the note currently playing on the specified channel</p>
 <p>Causes a key-off event to be processed by the channel.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#ac46aa3c1f60ccee08c2dad71328ba34f">noteOn()</a>, <a class="el" href="class_m_d___y_m2413.html#a3adfd20b47eea60b69b80d94366d5648">run()</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a213cb511f7559347bacb967bc9e27f4a">noteOn()</a>, <a class="el" href="class_m_d___y_m2413.html#a3adfd20b47eea60b69b80d94366d5648">run()</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">chan</td><td>channel number on which to stop this note [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
@@ -481,8 +590,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
-<a id="ac46aa3c1f60ccee08c2dad71328ba34f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac46aa3c1f60ccee08c2dad71328ba34f">&#9670;&nbsp;</a></span>noteOn() <span class="overload">[1/2]</span></h2>
+<a id="a213cb511f7559347bacb967bc9e27f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a213cb511f7559347bacb967bc9e27f4a">&#9670;&nbsp;</a></span>noteOn() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -498,6 +607,12 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
           <td></td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>freq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>vol</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -520,6 +635,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
   <table class="params">
     <tr><td class="paramname">chan</td><td>channel number on which to play this note [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
     <tr><td class="paramname">freq</td><td>frequency to play. </td></tr>
+    <tr><td class="paramname">vol</td><td>volume to set this note in range [VOL_MIN..VOL_MAX]. </td></tr>
     <tr><td class="paramname">duration</td><td>length of time in ms for the whole note to last. </td></tr>
   </table>
   </dd>
@@ -527,8 +643,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 </div>
 </div>
-<a id="a3c6d38e535b49d7f3df7f7efed85978d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c6d38e535b49d7f3df7f7efed85978d">&#9670;&nbsp;</a></span>noteOn() <span class="overload">[2/2]</span></h2>
+<a id="a4112f4449ae6e279977cd57fb067c6e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4112f4449ae6e279977cd57fb067c6e1">&#9670;&nbsp;</a></span>noteOn() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -554,6 +670,12 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>vol</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>duration</em> = <code>0</code>&#160;</td>
         </tr>
@@ -574,6 +696,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
     <tr><td class="paramname">chan</td><td>channel number on which to play this note [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
     <tr><td class="paramname">octave</td><td>the octave block for this note [MIN_OCTAVE..MAX_OCTAVE]. </td></tr>
     <tr><td class="paramname">note</td><td>the note number to play [0..11] as defined above. </td></tr>
+    <tr><td class="paramname">vol</td><td>volume to set this note in range [VOL_MIN..VOL_MAX]. </td></tr>
     <tr><td class="paramname">duration</td><td>length of time in ms for the whole note to last. </td></tr>
   </table>
   </dd>
@@ -598,12 +721,12 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 </div><div class="memdoc">
 <p>Run the music machine.</p>
 <p>Runs the automatic note off timing for all channels. This should be called from the main loop() as frequently as possible to allow the library to execute the note required timing for each channel.</p>
-<p>This method is not required if the application does not use durations when invoking <a class="el" href="class_m_d___y_m2413.html#ac46aa3c1f60ccee08c2dad71328ba34f">noteOn()</a>. </p>
+<p>This method is not required if the application does not use durations when invoking <a class="el" href="class_m_d___y_m2413.html#a213cb511f7559347bacb967bc9e27f4a">noteOn()</a>. </p>
 
 </div>
 </div>
-<a id="a6a0b9806303fa49f94a6c1de912f245f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a0b9806303fa49f94a6c1de912f245f">&#9670;&nbsp;</a></span>setInstrument()</h2>
+<a id="a1eb6bd79f9bd3763d14fc3ddb29b7983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb6bd79f9bd3763d14fc3ddb29b7983">&#9670;&nbsp;</a></span>setInstrument()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -623,8 +746,8 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>sustain</em> = <code>false</code>&#160;</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>vol</em> = <code><a class="el" href="class_m_d___y_m2413.html#a59ef0109f681e73292823edb016345ac">VOL_MAX</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -634,15 +757,15 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 <p>Set the playing instrument for a channel.</p>
-<p>Set the instrument for the channel to be the value specified. Valid instruments are given by the enumerated type instrument_t.</p>
+<p>Set the instrument for the channel to be one the value specified. Valid instruments are given by the enumerated type instrument_t.</p>
 <p>If percussion is not enabled, the valid range of instruments is one of the I_* values on channels [0..9]. The percussion instruments P_* are automatically set up on the channels CH_* [6..11] when percussion mode is enabled, and instruments I_* can be set up on channels [0..5].</p>
-<p>The instrument's release phase can be set to a standard mid-point to override the instrument's set profile.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a>, <a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a>, <a class="el" href="class_m_d___y_m2413.html#ad6c03b3d8e478b670807542766bdf58d">setSustain()</a></dd></dl>
+<p>Custom instruments must be defined before they can be used.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#aff04cfdc927cee5e9f9e371ce7aae8a7">setPercussion()</a>, <a class="el" href="class_m_d___y_m2413.html#a4baea9c20383d245590e2d9f1c10d6b6">instrument_t</a>, <a class="el" href="class_m_d___y_m2413.html#ad6c03b3d8e478b670807542766bdf58d">setSustain()</a>, defineInstrument()</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">chan</td><td>channel number on which volume is set [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
     <tr><td class="paramname">instr</td><td>one of the instruments I_* from instrument_t. </td></tr>
-    <tr><td class="paramname">sustain</td><td>modify the release profile of the sound envelope. </td></tr>
+    <tr><td class="paramname">vol</td><td>volume to set for the specified channel in range [VOL_MIN..VOL_MAX]. </td></tr>
   </table>
   </dd>
 </dl>
@@ -666,7 +789,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 <p>Set the current library/hardware operating mode.</p>
-<p>The library can operate with or without percussion instruments configured. Without percussion instruments, there are 9 channels(0..8] available for general instruments.With percussion enabled, there are 6 channels[0..5] available for general instruments and 5 channels[6..10], for a total of 11, allocated to percussion instruments.</p>
+<p>The library can operate with or without percussion instruments configured. Without percussion instruments, there are 9 channels(0..8] available for general instruments. With percussion enabled, there are 6 channels[0..5] available for general instruments and 5 channels[6..10], for a total of 11, allocated to percussion instruments.</p>
 <p>The method <a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a> will always return the total number of channels for the current configuration.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a6efe87d5e0ba75cbc803751f052a15be">isPercussion()</a>, <a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -703,13 +826,13 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Standardise the instrument release phase</p>
-<p>For the specific channel, set the release vlue to a standarrised mid-point for this instance of the instrument.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a6a0b9806303fa49f94a6c1de912f245f">setInstrument()</a></dd></dl>
+<p>Standardize the instrument release phase</p>
+<p>For the specific channel, set the release value to a standarized mid-point for this instance of the instrument.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="class_m_d___y_m2413.html#a1eb6bd79f9bd3763d14fc3ddb29b7983">setInstrument()</a></dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">chan</td><td>channel number on which sustain is set [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
-    <tr><td class="paramname">sustain</td><td>set true to standardise the release phase to a mid level value. </td></tr>
+    <tr><td class="paramname">sustain</td><td>set true to standardize the release phase to a mid level value. </td></tr>
   </table>
   </dd>
 </dl>
@@ -746,7 +869,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">chan</td><td>channel number on which volume is set [0..<a class="el" href="class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd">countChannels()</a>-1]. </td></tr>
-    <tr><td class="paramname">v</td><td>volume to set for the specificed channel in range [VOL_MIN..VOL_MAX]. </td></tr>
+    <tr><td class="paramname">v</td><td>volume to set for the specified channel in range [VOL_MIN..VOL_MAX]. </td></tr>
   </table>
   </dd>
 </dl>
@@ -769,10 +892,47 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
       </table>
 </div><div class="memdoc">
 <p>Set the volume for all channels.</p>
-<p>Set the volume for all channels to be the speified value. Valid values are all the values in the range [VOL_MIN..VOL_MAX].</p>
+<p>Set the volume for all channels to be the specified value. Valid values are all the values in the range [VOL_MIN..VOL_MAX].</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>volume to set for all channels in range [VOL_MIN..VOL_MAX]. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7abbf126e427a828c8b7601b77944b1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7abbf126e427a828c8b7601b77944b1a">&#9670;&nbsp;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MD_YM2413::write </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Write a byte directly to the device</p>
+<p>This method should be used with caution, as it bypasses all the checks and buffering built into the library. It is provided to support applications that are a collection of register setting to be written to hardware at set time intervals (eg, VGM files).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>the 8 bit device address to write the data. </td></tr>
+    <tr><td class="paramname">data</td><td>the 8 bit data value to write to the device. </td></tr>
   </table>
   </dd>
 </dl>
@@ -790,7 +950,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_m_d___y_m2413.html">MD_YM2413</a></li>
-    <li class="footer">Generated on Fri Nov 1 2019 09:41:40 for MD_YM2413 Library by
+    <li class="footer">Generated on Thu Jan 30 2020 15:38:00 for MD_YM2413 Library by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.16 </li>
   </ul>

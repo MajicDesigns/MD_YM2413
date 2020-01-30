@@ -41,9 +41,13 @@ const uint8_t A0_PIN = 4;     // Arduino pin connected to the A0 pin
 const uint8_t PLAY_VOL = MD_YM2413::VOL_MAX;
 
 // Number of playing channels and the instruments for each
-const uint8_t NUM_CHAN = 3;   
-const MD_YM2413::instrument_t instr[NUM_CHAN] =
-{ MD_YM2413::I_PIANO, MD_YM2413::I_SYNTH_BASS, MD_YM2413::I_ACOUSTIC_BASS };
+const MD_YM2413::instrument_t instr[] =
+{
+  MD_YM2413::I_PIANO, 
+  MD_YM2413::I_SYNTH_BASS, 
+  MD_YM2413::I_ACOUSTIC_BASS 
+};
+const uint8_t NUM_CHAN = ARRAY_SIZE(instr);
 
 // Global Data ------------------------
 MD_YM2413 S(D_PIN, WE_PIN, A0_PIN);

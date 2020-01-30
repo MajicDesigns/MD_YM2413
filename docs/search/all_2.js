@@ -5,8 +5,10 @@ var searchData=
   ['ch_5fsd_4',['CH_SD',['../class_m_d___y_m2413.html#a053738bc460cdb5e746a6f753aff846b',1,'MD_YM2413']]],
   ['ch_5ftcy_5',['CH_TCY',['../class_m_d___y_m2413.html#a6bb4921396d8331f7a8268ce7d06ff67',1,'MD_YM2413']]],
   ['ch_5ftom_6',['CH_TOM',['../class_m_d___y_m2413.html#ae16e4cd45a31d6c9cadce01728407f84',1,'MD_YM2413']]],
-  ['clock_5fhz_7',['CLOCK_HZ',['../_m_d___y_m2413__lib_8h.html#a4068229bfd30e574c7a9f1a8c6687582',1,'MD_YM2413_lib.h']]],
-  ['countchannels_8',['countChannels',['../class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd',1,'MD_YM2413']]],
-  ['compiler_20switches_9',['Compiler Switches',['../page_compile_switch.html',1,'']]],
-  ['copyright_10',['Copyright',['../page_copyright.html',1,'']]]
+  ['ch_5fundefined_7',['CH_UNDEFINED',['../class_m_d___y_m2413.html#a0396e7f1513a8b3772fb9600bb8115bb',1,'MD_YM2413']]],
+  ['clock_5fhz_8',['CLOCK_HZ',['../_m_d___y_m2413__lib_8h.html#a4068229bfd30e574c7a9f1a8c6687582',1,'MD_YM2413_lib.h']]],
+  ['countchannels_9',['countChannels',['../class_m_d___y_m2413.html#a6fee9e00e148365aa11da36865b7d4dd',1,'MD_YM2413']]],
+  ['compiler_20switches_10',['Compiler Switches',['../page_compile_switch.html',1,'']]],
+  ['copyright_11',['Copyright',['../page_copyright.html',1,'']]],
+  ['custom_20instruments_12',['Custom Instruments',['../page_custom.html',1,'']]]
 ];
