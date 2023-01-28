@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hardware_20connections_16',['Hardware Connections',['../page_hardware.html',1,'']]]
+  ['hardware_20connections_0',['Hardware Connections',['../page_hardware.html',1,'index']]]
 ];

@@ -148,7 +148,7 @@ void setup(void)
   S.begin();
   S.setVolume(CHANNEL, volume);
   S.setInstrument(CHANNEL, MD_YM2413::I_CUSTOM);
-  S.loadInstrumentOPL2(0);
+  S.loadInstrumentOPL2(midiInstruments[0]);
 
   CP.begin();
 
