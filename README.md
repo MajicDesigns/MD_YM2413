@@ -1,5 +1,7 @@
 # MD_YM2413
 
+[![arduino-library-badge](https://www.ardu-badge.com/badge/MD_YM2413.svg?)](https://www.ardu-badge.com/MD_YM2413)
+
 The YM2413, OPLL, is a cost-reduced FM synthesis sound chip manufactured by Yamaha Corporation and based on their YM3812 (OPL2).
 
 The simplifications mean that the YM2413 can only play one user-defined instrument at a time, with an additional 15 read-only hard-coded instrument profiles available. The IC can operate as 9 channels of instruments or 6 channels with melodic instruments and 5 with percussion instruments.

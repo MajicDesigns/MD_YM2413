@@ -12,7 +12,7 @@
 The YM2413 Synthesizer IC
 -------------------------
 
-![YM2413 IC] (YM2413_IC.png "YM2413 IC")
+\image{inline} html YM2413_IC.png "YM2413 IC"
 
 The YM2413, OPLL, is a cost-reduced FM synthesis sound chip manufactured 
 by Yamaha Corporation and based on their YM3812 (OPL2).
@@ -46,6 +46,9 @@ References
 - Additional technical information from http://www.smspower.org/Development/YM2413
 
 \page pageRevisionHistory Revision History
+Jan 2023 vesrion 1.0.1
+- Fixed incorrect reference to instrument table in Custom example
+
 Feb 2020 version 1.0.0
 - Initial implementation.
 
@@ -53,7 +56,7 @@ Feb 2020 version 1.0.0
 YM2413 IC Description
 ---------------------
 
-![YM2413 Block Diagram] (YM2413_BlockDiagram.png "YM2413 Block Diagram")
+\image{inline} html YM2413_BlockDiagram.png "YM2413 Block Diagram"
 
 This is the block diagram of the YM2413. It has an 8 bit bus interface with one 
 address line to select one of two write-only registers. One register is used 
