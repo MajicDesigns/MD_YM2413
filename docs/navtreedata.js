@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "MD_YM2413 Library", "index.html", [
-    [ "YM2413 Sound Synthesizer Library", "index.html", null ],
+    [ "YM2413 Sound Synthesizer Library", "index.html", "index" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

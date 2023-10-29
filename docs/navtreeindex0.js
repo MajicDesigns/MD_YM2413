@@ -78,5 +78,12 @@ var NAVTREEINDEX0 =
 "globals_defs.html":[2,1,1],
 "index.html":[],
 "index.html":[0],
+"page_compile_switch.html":[0,3],
+"page_copyright.html":[0,5],
+"page_custom.html":[0,2],
+"page_donation.html":[0,6],
+"page_hardware.html":[0,0],
+"page_library.html":[0,1],
+"page_revision_history.html":[0,4],
 "pages.html":[]
 };

@@ -24,5 +24,5 @@
 // Miscellaneous defines
 #define VOL(v) (15-v)           ///< internal volume [0..15] mapped to hardware attenuation [15..0]
 #define DATA_BITS 8             ///< Number of bits in the byte (for loops)
-#define CLOCK_HZ  3597945UL     ///< Nominal 3.6MHz clock (3.597945MHz)
+#define CLOCK_HZ  3579545UL     ///< Nominal 3.6MHz clock (3.579545MHz)
 

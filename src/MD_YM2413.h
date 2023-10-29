@@ -46,7 +46,10 @@ References
 - Additional technical information from http://www.smspower.org/Development/YM2413
 
 \page pageRevisionHistory Revision History
-Jan 2023 vesrion 1.0.1
+Nov 2023 version 1.1.0
+- Fixed Crystal frequency to 3.579545MHz
+
+Jan 2023 version 1.0.1
 - Fixed incorrect reference to instrument table in Custom example
 
 Feb 2020 version 1.0.0

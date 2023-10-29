@@ -1,6 +1,11 @@
 <map id="src/MD_YM2413.h" name="src/MD_YM2413.h">
-<area shape="rect" id="node1" title="Main header file for the MD_YM2413 library." alt="" coords="113,5,244,32"/>
-<area shape="rect" id="node3" href="$_m_d___y_m2413_8cpp.html" title="Implements class definition and general methods." alt="" coords="5,155,149,181"/>
-<area shape="rect" id="node5" href="$_m_d___y_m2413__hw_8cpp.html" title="Implements hardware related methods." alt="" coords="197,155,363,181"/>
-<area shape="rect" id="node7" href="$_m_d___y_m2413__lib_8h.html" title="Library only definitions for the MD_YM2413 library." alt="" coords="103,80,253,107"/>
+<area shape="rect" id="Node000001" title="Main header file for the MD_YM2413 library." alt="" coords="113,6,244,31"/>
+<area shape="rect" id="Node000002" href="$_m_d___y_m2413_8cpp.html" title="Implements class definition and general methods." alt="" coords="5,155,149,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,40,114,58,93,81,85,100,80,120,79,155,74,155,75,119,80,98,88,79,111,54,138,35"/>
+<area shape="rect" id="Node000003" href="$_m_d___y_m2413__hw_8cpp.html" title="Implements hardware related methods." alt="" coords="197,155,363,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="219,36,245,54,268,79,277,98,282,119,283,155,278,155,276,120,272,100,263,81,242,58,216,40"/>
+<area shape="rect" id="Node000004" href="$_m_d___y_m2413__lib_8h.html" title="Library only definitions for the MD_YM2413 library." alt="" coords="103,81,253,106"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="181,46,181,80,176,80,176,46"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="153,116,95,157,92,153,150,112"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="208,112,265,153,262,157,205,116"/>
 </map>
